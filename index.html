@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Work in Progress</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add Montserrat font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #222;
+            color: #fff;
+            font-family: 'Montserrat', Arial, sans-serif;
+            text-align: center;
+            padding-top: 10vh;
+        }
+        .container {
+            background: #333;
+            display: inline-block;
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        #countdown {
+            font-size: 2em;
+            margin-top: 20px;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚧 Work in Progress 🚧</h1>
+        <p>This page will be available soon.</p>
+        <div id="countdown"></div>
+    </div>
+    <script>
+    
+        const target = new Date(1747928346208 + 5 * 24 * 60 * 60 * 1000);
+  
+
+        function updateCountdown() {
+            const current = new Date();
+            const diff = target - current;
+
+            if (diff <= 0) {
+                document.getElementById('countdown').textContent = "We're live!";
+                clearInterval(timer);
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('countdown').textContent =
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        updateCountdown();
+        const timer = setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
